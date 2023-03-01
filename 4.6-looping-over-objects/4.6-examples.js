@@ -54,29 +54,53 @@ let teams = [
 
 
 
+
+
+
+
+//static vs dynamic key name
+const user = {
+  firstName: "Elon",
+  lastName: "Musk",
+  isVerified: true,
+  lastPost: "We are hiring!"
+}
+
+
+const x = "firstName"
+//console.log(user[firstName]) //reference error: firstName is not defined -> it looks for a variable called firstname
+// console.log(user["firstName"]) //Elon
+// console.log(user[x]) //Elon
+
+// console.log(user.lastPost) //We are hiring!
+// console.log(user.firstName) //elon
+// console.log(user.x) //undefined
+
+
+
 /* for-in loops-> use it to loop over the keys of objects */
 const people = {
   "Lee Finch": { address: "913 Hunts Lane", isCustomer: true },
   rob: {address: "100 keep it 100 way", isCustomer: true},
   "Whitney Shawa": { address: "392 Norfolk Street", isCustomer: false },
-  "Gabrielle Mayo": { address: "934 Engert Avenue", isCustomer: false },
+  "Gabrielle Mayo": { address: "934 Engert Avenue", isCustomer: false }
 };
-
 // console.log(people["rob"]["address"])
 // console.log(people['Lee Finch'].address)
 
 
-
-// const nums2 = [3,6,9,12]
-
-// console.log(nums2[2])
-
-
 for(let key in people){
-  console.log(key) //keys
-  console.log(people[key]) //values of the object
-  // objectNameHere[keyhere] //gives you the value of the object at that key
   // console.log(people[key])
 }
 
 
+/* Transforming objects into arrays using Object.values() or Object.keys() */
+
+//Object.keys(PutObjectHere)-> will return an array of keys from the object you referenced
+console.log(Object.keys(user))
+console.log(Object.keys(people))
+
+
+//Object.values(PutObjectHere)-> will return an array of value from the object you referenced
+console.log(Object.values(user))
+console.log(Object.values(people))
