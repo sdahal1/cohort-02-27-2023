@@ -8,13 +8,12 @@ let info = {
 // should convert the pointsScored to a pointsPerGame
 // should default to 0 if there is no `pointsScored` key
 // should default to 0 if no stats is provided
-function getPointsPerGame(stats){
-  return stats.pointsScored/stats.numGames
+function getPointsPerGame({points=0, numGames=1}=0){
+  return points/numGames
 }
-
-// console.log(getPointsPerGame({numGames: 10, pointsScored: 200}));
-// console.log(getPointsPerGame({pointsScored: 200})); //what if the key "numGames" is missing? or what if pointsScored is missing?
-// console.log(getPointsPerGame()); //what if we dont even provide any data?
+console.log(getPointsPerGame(info));
+console.log(getPointsPerGame({numGames: 6})); //what if the key "points" is missing? or what if 
+console.log(getPointsPerGame()); //what if we dont even provide any data?
 
 
 
@@ -34,6 +33,6 @@ function checkIfTeamHasPlayed(teamInfo, opponentName){
 }
 
 
-console.log(checkIfTeamHasPlayed(info, "bulls"))
+// console.log(checkIfTeamHasPlayed(info, "bulls"))
 
 
