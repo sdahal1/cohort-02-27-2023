@@ -8,7 +8,7 @@ let info = {
 // should convert the pointsScored to a pointsPerGame
 // should default to 0 if there is no `pointsScored` key
 // should default to 0 if no stats is provided
-function getPointsPerGame({points=0, numGames=1}=0){
+function getPointsPerGame({points=0, numGames=1}={}){
   return points/numGames
 }
 console.log(getPointsPerGame(info));
