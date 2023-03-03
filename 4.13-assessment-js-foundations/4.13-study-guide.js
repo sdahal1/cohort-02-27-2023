@@ -139,6 +139,7 @@ let cities_usa = {
     numberOfChampionships: 20,
     teams: ["Lakers"]
   },
+
   "New York": {
     totalNumberOfPlayers: 4,
     numberOfChampionships: 3,
@@ -179,16 +180,36 @@ function addCityToCities(team, cities={}) {
 }
 
 // console.log(addCityToCities(newTeam, cities_usa))
+let obj = {
+  x:5,
+  y:10,
+  'a b': 15
+}
+
+
+// let word = "x"
+
+// obj[word] //5
+// obj.x //5
+// obj['x'] //5
+// obj['y']
+// obj['a b']
 
 
 
 
 function calculateTotalChampionships(cities={}) {
-	
+  //have somewhere to remember the count
+  let result = 0;
+	//get access to each city in the cities obj
+  for(let cityNameKey in cities){
+    result += cities[cityNameKey].numberOfChampionships
+  }
+  return result
+    //from there, get acess to the numberOfChampionships key to get the value for the number we want to add
 }
 
-
-
+// console.log(calculateTotalChampionships(cities_usa))
 
 
 /*
@@ -219,8 +240,18 @@ let cities_usa = {
 
 */
 function printInfo(cities={}) {
-	
+	let result = ""
+  //we want to create a sentance that looks like this for each city:
+  for(let cityNameKey in cities){
+    let currentCityObject = cities[cityNameKey];
+    // ${cityNameHere} has ${numChampinshipshere} championships and the following teams: ${teamsHere}
+    let sentence = `${cityNameKey} has ${currentCityObject.numberOfChampionships} championships and the following teams: ${currentCityObject.teams.join(", ")}. \n`
+    // ^^ add that sentence to result
+    result += sentence;
+  }
+
+  return result;
 }
 
 
-// console.log(printInfo(cities_usa))
+console.log(printInfo(cities_usa))
