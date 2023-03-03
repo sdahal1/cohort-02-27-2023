@@ -1,0 +1,17 @@
+{
+  "name": "3.7-3.9-packages-and-assessment-study-guide",
+  "version": "1.0.0",
+  "description": "demo on module 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pickle": "pwd",
+    "start": "node main.js"
+  },
+  "author": "Rob",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "moment": "^2.29.4"
+  }
+}

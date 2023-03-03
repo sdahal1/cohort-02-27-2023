@@ -128,7 +128,7 @@ Add a city from a given team to a given collection of cities and update the citi
 
 let newTeam = {
   name: "Clippers",
-  city: "Los Alamo",
+  city: "Los Angeles",
   players: ["Kawhi Leonard", "Paul George"],
   championships: 1
 }
@@ -160,7 +160,7 @@ function addCityToCities(team, cities={}) {
   // console.log(citiesList.includes(city))
 
   //console.log(cities[city]) //this will be undefined if the city is not in cities object. If it is in the object, it will give back the value at that city
-
+  // if(city in cities){ //this is also valid way to checkin if key in object
   if(cities[city] !== undefined){
     //update the value at cities[city]
     const matchingCity = cities[city]
@@ -179,7 +179,7 @@ function addCityToCities(team, cities={}) {
   return cities
 }
 
-// console.log(addCityToCities(newTeam, cities_usa))
+console.log(addCityToCities(newTeam, cities_usa))
 let obj = {
   x:5,
   y:10,
@@ -256,6 +256,10 @@ function printInfo(cities={}) {
 
   return result;
 }
+
+
+
+
 
 
 console.log(printInfo(cities_usa))
