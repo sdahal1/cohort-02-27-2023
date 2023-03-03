@@ -250,6 +250,10 @@ function printInfo(cities={}) {
     result += sentence;
   }
 
+  const total = calculateTotalChampionships(cities);
+  
+  result += `Total Championships: ${total}`
+
   return result;
 }
 
