@@ -1,3 +1,60 @@
+/* 
+.find() -> loop through the array to find the first element that matches a condition
+  - accepts a callback function just like forEach does
+  - the callback function accepts parameters for element and index, just like forEach does
+  - the callback function has to return a condition. the find() method will stop and return the first element that the condition evaluates true for
+  - .find() will return the ELEMENT that condition returns true on.......OR if no element gets a truthy condition, it will return undefined
+
+
+.filter() -> loop through the array to find the all the elements that matches a condition and will return to you an array of these elements
+  - accepts a callback function just like .forEach and .find() does
+  - the callback function accepts parameters for element and index, just like .forEach and .find() does
+  - the callback function has to return a condition. the filter() method will stop after going through a full array
+  - .filter() will return the ARRAY that contains elements where the condition returns true on.......OR if no elements gets a truthy condition, it will return an empty array
+
+
+
+.map() -> loop through the array to transform each element to something else without modifying the original dataset
+  - accepts a callback function just like .forEach and .find() does
+  - the callback function accepts parameters for element and index, just like .forEach and .find() does
+  - the callback function can return anything that we want each element from the original array to "map" or "transform" into
+  - .map() will return the ARRAY that contains transformed elements (of whatever is returned from the callback)
+
+
+
+.some() -> loops through the array to check if "at least one" or "some" elements match the condition in the .some()'s callback function
+  - accepts a callback function just like .forEach and .find() does
+  - the callback function accepts parameters for element and index, just like .forEach and .find() does
+  - the callback function needs to return a CONDITION.
+  - .some() will return TRUE  if any of the elements match that condition in the callbackfunction  or FALSE if NONE of the elements match the condition in the cb
+
+
+.every() -> loops through the array to check if "every" element matches the condition in the .every()'s callback function
+  - accepts a callback function just like .forEach and .find() does
+  - the callback function accepts parameters for element and index, just like .forEach and .find() does
+  - the callback function needs to return a CONDITION.
+  - .every() will return TRUE if every one of the elements match that condition in the cb, or FALSE if even one element does not match teh condition in the cb
+
+
+Use case for .reduce() -> accumulator pattern (calculate total sum, accumulate onto a datatype)
+.reduce()
+    -takes a callback fn AND a starting value to accumulate onto
+    - callback function parameters -> 1st param: accumulator, 2nd param: each element, 3rd param: each index
+    - if no value is provided as the intial value for accumulator, it will default to being the first element in the array
+    - callback returns the new value for the accumulator
+    - does not modify original array -> store output in variable or return the .reduce() call
+    - outputs the final value of the accumulator
+
+
+.sort()
+    - accepts a callback function as an input (thats it for our purposes)
+    - callback function parameters -> 1st param: an element, 2nd param: another element
+    - callback returns a number (Negative num, 0, Postive num). Negative number-> a before b, positve number-> b before a
+    - Modifies the original array
+
+*/
+
+
 const books = [
   {
       id: 1,
