@@ -113,15 +113,58 @@ const students = {
 
 /*
 1. Get books by publisher name
+
+[
+ Thinkandgrowrichobject,
+  Winfriends object,
+
+]
 */
 
+function getBooksByPublisherName(books, publisherName){
+  const result = books.filter((bookObj)=>{
+    return bookObj.publisher.name === publisherName;
+  })
+
+  return result;
+}
+
+// console.log(getBooksByPublisherName(books,"Simon & Schuster"))
 
 /* 
 2. Get a students finished books
 
 Write a function that takes an array of books, object containing all students, and a student name.
 It will return an array of book objects that represent the books that the given user has finished.
+
+
+[
+
+]
 */
+
+function getStudentsFinshedBooks(books=[], students={}, studentName=""){
+  //get access to the given students finished property -> array -> [1,2]
+  const finishedBooks = students[studentName].finished
+  //go through the books array and only filter out the books whose id is included in the given student's finishedBooks array
+  const result = books.filter((bookObj)=>{
+    //the id of the book needs to be inside the finishedBooksArray
+    return finishedBooks.includes(bookObj.id)
+    // let found= false
+    // finishedBooks.forEach(id=>{
+    //   if(id === bookObj.id){
+    //     found = true
+    //     return;
+    //   }
+    // })
+    // return found
+  })
+
+  return result
+
+}
+
+// console.log(getStudentsFinshedBooks(books, students, "Lebron"))
 
 
 
@@ -132,22 +175,114 @@ Function inputs: list of books, object containing all students, publisher name, 
 
 */
 
+function hasStudentReadAllBooksFromGivenPublisher(books=[], students={}, publisherName="", studentName=""){
+  //looked at steph's finshedbooks [1,2,4]
+  const finishedBooks = students[studentName].finished
+  // only looked at books from simon & schuster [{id:1}, {id:2}]
+  // const booksFromGivenPublisher = books.filter((bookObj)=>{
+  //   return bookObj.publisher.name === publisherName;
+  // })
+
+  const booksFromGivenPublisher = getBooksByPublisherName(books,publisherName);
+  // check if every id from the publishers books array is in the stephs finished books
+  const result = booksFromGivenPublisher.every((bookObj)=>{
+    //check if studentsFinishedBooks has the current publisher's book's id
+    return finishedBooks.includes(bookObj.id)
+  })
+
+  return result;
+
+}
+
+
+// console.log(hasStudentReadAllBooksFromGivenPublisher(books,students, "Simon & Schuster", "Steph"))
+
 
 
 /* 
-4. Given an object containing all students, and two student names, determine if the first student has read any books that the second student has not read yet. If so, return true. If the first student has not read any books the second student has not read, return false.
+4. Given an object containing all students, and two student names, determine if the first student has read any books that the second student has not read yet (or if some of the books in the studentA finished array are in the studentB not finished array). If so, return true. If the first student has not read any books the second student has not read, return false.
 
 */
 
+function hasFirstStudentReadSecondStudentsUnfinishedBook(students={}, studentAName='', studentBName=''){
+  //access the first students finished books [1,2]
+  const studentAFinishedBooks = students[studentAName].finished;
+  //access the second students unfinished books [2,3,4]
+  const studentBNotFinishedBooks = students[studentBName].notFinished;
+  //check if any elements from the finished array is 'included' in the unfinished array
+  const result = studentAFinishedBooks.some((bookId)=>{
+    return studentBNotFinishedBooks.includes(bookId)
+  })
+
+  return result;
+
+  //the for each way below
+  // let result = false;
+  // studentAFinishedBooks.forEach((bookId)=>{
+  //   if(studentBNotFinishedBooks.includes(bookId)){
+  //     result = true;
+  //     return;
+  //   }
+  // })
+  // return result;
+}
+
+// console.log(hasFirstStudentReadSecondStudentsUnfinishedBook(students, "Lebron", "Steph"));
+
+
+
 
 
 
 /* 
-5. Return all the student names who have read any book in the given student's notFinished books
+5. Return all the student names in an array, who have read any book in the given student's notFinished books
 
 Inputs: object of students, student name
 
+
+[
+  "Lebron",
+  "Jessie"
+]
 */
+
+function findNamesOfStudentsWhoReadGivenStudentsNotFinishedBooks(students={},studentName=""){
+  //get the givenStudents notFinishedbooks
+  const notFinishedBooks = students[studentName].notFinished;
+
+  const result = []
+  //loop through the students object to look at each key value pair
+  for(const studentNameKey in students){
+    // console.log("key is this", studentNameKey)
+    // console.log("value is this", students[studentNameKey])
+    
+    const studentAFinishedBooks = students[studentNameKey].finished;
+    //access the second students unfinished books [2,3,4]
+    const studentBNotFinishedBooks = students[studentName].notFinished;
+    //check if any elements from the finished array is 'included' in the unfinished array
+    const hasStudentReadBooks = studentAFinishedBooks.some((bookId)=>{
+      return studentBNotFinishedBooks.includes(bookId)
+    })
+    if(hasStudentReadBooks === true){
+      result.push(studentNameKey)
+    }
+    
+    //helper function way
+    // if(hasFirstStudentReadSecondStudentsUnfinishedBook(students,studentNameKey, studentName) === true){
+    //   result.push(studentNameKey)
+    // }
+    // return result;
+  }
+  
+  return result;
+
+  
+}
+
+// console.log(findNamesOfStudentsWhoReadGivenStudentsNotFinishedBooks(students, "Steph"))
+
+
+
 
 
 
