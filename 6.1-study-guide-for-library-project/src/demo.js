@@ -111,7 +111,7 @@ function partitionCoursesByStudentProgress(courses) {
   return [onPace,notOnPace]
 }
 
-console.log(partitionCoursesByStudentProgress(courses))
+// console.log(partitionCoursesByStudentProgress(courses))
 
 /* 
 
@@ -145,10 +145,75 @@ let oneCourse = {
         }
     ]
 }
+
+
+[
+     {
+        id: 2,
+        name: {
+            first: "Scooby",
+            last: "Doo"
+        }
+    },
+    {
+        id: 4,
+        name: {
+            first: "Spongebob",
+            last: "Squarepants"
+        }
+    },
+
+]
+
+
+[]
 */
 //similar to getBorrowersForBook();
-function getStudentsForCourse(course, students) {}
+function getStudentsForCourse(course, students) {
+    //have an array for the result
+    const result = [];
+    const {roster} = course;
+    //look at each element in the course objects roster. For each element look at the studentId property, 
+    roster.forEach((rosterObject,idx)=>{
+        //and check for each rosterObject's id in the the students array. 
+        console.log(rosterObject)
+        //loop through students array
+        students.forEach((studentObject)=>{
+            console.log("student objects id", studentObject.id)
+            //check if If the elements id property matches the studentId property from the roster object,
+            if(rosterObject.studentId === studentObject.id){
+                //then modify that student object to have the onpace property from the current roster object, 
+                studentObject.onPace = rosterObject.onPace
+                
+                //then push the current matching student object to the result
+                result.push(studentObject);
+            }
+        })
+        
+    })
 
+    return result;
+
+    
+}
+
+// console.log(["a", "b", "c", "d", "e"].slice(0,3))
+
+function getStudentsForCourseAdvancedWay(course, students){
+    const {roster} = course;
+    const resultMapped = roster.map((rosterObject)=>{
+        let matchingStudent = students.find((studentObject)=>{
+            
+            return rosterObject.studentId === studentObject.id
+        })
+        matchingStudent.onPace = rosterObject.onPace
+       return matchingStudent; 
+    })
+
+    return resultMapped.slice(0,2)
+}
+
+// JSON.stringify(dataGoesHere)
 let oneCourse = {
   id: 1,
   name: "Javascript Fundamentals",
@@ -156,29 +221,22 @@ let oneCourse = {
   instructorId: 3,
   roster: [
     {
-      studentId: 1,
-      onPace: true,
-    },
-    {
       studentId: 2,
       onPace: false,
     },
     {
-      studentId: 3,
-      onPace: true,
-    },
+        studentId: 3,
+        onPace: true,
+      },
     {
       studentId: 4,
       onPace: true,
-    },
-    {
-      studentId: 5,
-      onPace: true,
-    },
+    }
   ],
 };
-
 // console.log(getStudentsForCourse(oneCourse, students));
+
+// console.log(getStudentsForCourseAdvancedWay(oneCourse, students));
 
 /* 
 9. getTotalNumberOfSeatsForStudent- Given a student object and an array of course objects, find the number of times this student object's id appears in the all the courses rosters array
@@ -190,9 +248,45 @@ let student1 = {
             last: "Bunny"
         },
     }
+
+
+let count = 0
+
+//id of the student
+
 */
 
-function getTotalNumberOfSeatsForStudent(student = {}, courses = []) {}
+function getTotalNumberOfSeatsForStudent(student = {}, courses = []) {
+    let count = 0;
+    const {id} = student;
+    courses.forEach((courseObj)=>{
+        const {roster} = courseObj;
+        roster.forEach((rosterObject)=>{
+            if(rosterObject.studentId === id){
+                count++
+            }
+        })
+    })
+
+    return count;
+
+}
+
+function getTotalNumberOfSeatsForStudentAdvanced(student = {}, courses = []) {
+    const {id} = student;
+    let count = courses.reduce((accumulator, courseObj)=>{
+        const {roster} = courseObj;
+        const foundStudent = roster.find((rosterObject)=>{
+            return rosterObject.studentId === id
+        })
+        if(foundStudent != undefined){
+            accumulator++
+        }
+        return accumulator;
+
+    },0)
+    return count;
+}
 
 let student1 = {
   id: 1,
@@ -202,7 +296,7 @@ let student1 = {
   },
 };
 
-// console.log(getTotalNumberOfSeatsForStudent(student1, courses));
+console.log(getTotalNumberOfSeatsForStudentAdvanced(student1, courses));
 
 /* 
 10- Given a student object, an array of course objects and an array of authors objects->
