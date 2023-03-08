@@ -20,7 +20,7 @@ function getTotalStudentsCount(students = []) {
 //3. Find instructor by Id-> given array of instructors and an id, find the instructor object that matches the given id. Return NULL if not found
 function findInstructorById(instructors = [], id) {
   const result = instructors.find((instructorObj) => {
-    return instructorObj.id == id;
+    return instructorObj.id === id;
   });
   if (result === undefined) return null;
   return result;
@@ -296,7 +296,7 @@ let student1 = {
   },
 };
 
-console.log(getTotalNumberOfSeatsForStudentAdvanced(student1, courses));
+// console.log(getTotalNumberOfSeatsForStudentAdvanced(student1, courses));
 
 /* 
 10- Given a student object, an array of course objects and an array of authors objects->
@@ -339,19 +339,109 @@ output should look like this like this: [
   }
 ]
 
+
+
+givenStudentid = 1
+[
+
+]
+
+for each course in the courses array we look at the roster key(property)
+    //roster is an array of rosterObjects representing students
+    //check the roster for each element to see if the element's student id is found that matches the givenstudentid. If a student whose id matches the givenstudentid is found in the roster , then we will push the courseobject to the result array
 */
 
-function getCoursesStudentTakes(student, courses, instructors) {}
+function getCoursesStudentTakes(student={}, courses=[], instructors=[]) {
+    const {id:givenStudentId} = student;
+    const result = []
+    //loop through courses to get access to each course object
+    courses.forEach((courseObj)=>{
+        //we will look at the roster for each course object
+        const {roster} = courseObj;
+        let found = false;
+        //roster is an array, so we will loop through roster to get access to each roster object's studentId to compare it with the given students id
+        roster.forEach((rosterObj)=>{
+            //if the ids match, then the given student is enrolled in the roster for the current course
+            if(rosterObj.studentId === givenStudentId){
+                found = true;
+            }
+        })
+        //if the student found, push the course to the result array
+        if(found === true){
+            //modify the courseObj to have instructor information embedded
+            const instructorForCourse = findInstructorById(instructors, courseObj.instructorId)
+            courseObj.instructor = instructorForCourse
+            //then push to result array
+            result.push(courseObj)
+        }
+    })
+    return result;
+}
 
-// console.log(getCoursesStudentTakes(student1, courses, instructors));
+function getCoursesStudentTakesAdvanced(student={}, courses=[], instructors=[]) {
+    const {id:givenStudentId} = student;
+    //loop through courses to get access to each course object
+    const result = courses.filter((courseObj)=>{
+        //we will look at the roster for each course object
+        const {roster} = courseObj;
+        const found = roster.some((rosterObj)=>{
+            return rosterObj.studentId === givenStudentId
+        })
+
+        // const found1 = roster[0].studentId === givenStudentId && roster[0].onPace === false
+        //if the student found, push the course to the result array
+        if(found === true){
+            //modify the courseObj to have instructor information embedded
+            const instructorForCourse = findInstructorById(instructors, courseObj.instructorId)
+            courseObj.instructor = instructorForCourse
+            //then push to result array by returning true (thats a .filter() rule)
+            return true
+        }
+        return false;
+    })
+    return result;
+}
+
+// console.log(getCoursesStudentTakesAdvanced(student1, courses, instructors));
 
 /*
 11. Given an array of courses, should return the total number of courses that  currently have at least one person behind
 */
 
-function getCoursesNotOnPaceCount(courses = []) {}
+function getCoursesNotOnPaceCount(courses = []) {
+    let count = 0;
+    courses.forEach((courseObj)=>{
+        const {roster} = courseObj;
+        roster.forEach((rosterObj)=>{
+            if(rosterObj.onPace === false){
+                count++;
+                //return so that we exit the loop on roster. if someone is found that is not on pace, we consider the whole course to not be on pace, so we dont need to keep looking for more students in THIS courses roster, we can move on to the next course in teh courses.forEach() loop
+                return;
+            }
+            
+        })
+    })
+    return count;
+}
 
-// console.log(getCoursesNotOnPaceCount(courses));
+function getCoursesNotOnPaceCountAdvanced(courses = []) {
+    const count = courses.reduce((accumulator, courseObj)=>{
+        const {roster} = courseObj;
+       
+        const areSomeNotOnPace = roster.some((rosterObj)=>{
+            return rosterObj.onPace === false
+        })
+
+        if(areSomeNotOnPace === true){
+            accumulator++
+        }
+
+        return accumulator
+    },0)
+    return count;
+}
+
+// console.log(getCoursesNotOnPaceCountAdvanced(courses));
 
 /* 
 12. Get most common course categories and order them from most popular to least popular. Limit the count to the top two-> Output in this format
