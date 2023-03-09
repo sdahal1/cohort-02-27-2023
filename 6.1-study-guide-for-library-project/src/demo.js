@@ -453,15 +453,50 @@ function getCoursesNotOnPaceCountAdvanced(courses = []) {
 ]
 
 
+//keep track of most common categories
+{
+  "Software Engineering": 3,
+  "Psychology":2,
+  "Finance":2
+}
+
 
 */
 
-const getMostCommonCategories = (courses = []) => {};
+function getMostCommonCategories(courses = []){
+  //build an object that keeps track of categories and their count
+  const trackerObj = {}
+
+  //look at each element in the courses array
+  courses.forEach((courseObj)=>{
+    //for the current courseObj's category property, check if that category exists as a key in the trackerObj. If the catgory does not exist (undefined) in the object, then create the category as a key, and set value as 1. 
+    if(trackerObj[courseObj.category] === undefined){
+      trackerObj[courseObj.category] = 1
+    }else{
+      //Otherwise, if category does exist, increment the value at that category key by 1
+      trackerObj[courseObj.category] += 1
+    }
+  })
+
+  // console.log(trackerObj)
+  const result = []
+  for(let categoryKey in trackerObj){
+    let info = {name: categoryKey, count: trackerObj[categoryKey]}
+    result.push(info)
+  }
+  
+
+  result.sort((elementA, elementB)=>{
+    return elementB.count - elementA.count
+  })
+  return result.slice(0,2)
+}
+
 
 // console.log(getMostCommonCategories(courses));
 
 /* 
-13. Get most popular courses- find the top 3 largest courses based on roster size
+13. Get most popular courses- find the top 2 largest courses based on roster size
 
 
 Output in this format: 
@@ -472,15 +507,37 @@ Output in this format:
 ]
 */
 
-function getMostPopularCoursesHelper(courses = []) {}
+function getMostPopularCoursesHelper(courses = []) {
+  courses.sort((courseA, courseB)=>{
+    return courseB.roster.length - courseA.roster.length
+  })
+  return courses
+}
 
-function getMostPopularCourses(courses = []) {}
+function getMostPopularCourses(courses = []) {
+  // courses.sort((courseA, courseB)=>{
+  //   return courseB.roster.length - courseA.roster.length
+  // })
+
+  //use helper function to sort instead
+  courses = getMostPopularCoursesHelper(courses)
+  const topTwoCourses = courses.slice(0,3)
+
+  const result = topTwoCourses.map((courseObj)=>{
+    return {
+      name: courseObj.name,
+      rosterSize: courseObj.roster.length
+    }
+  })
+
+  return result;
+}
 
 // console.log(getMostPopularCourses(courses));
 
 /* 
 
-14. getMostPopularInstructors()- Get instructors of the 2 largest classes 
+14. getMostPopularInstructors()- Get instructors of the 2 largest(most popular) classes 
 
 Output in this format: 
 
@@ -491,10 +548,28 @@ Output in this format:
 
 */
 
-function getMostPopularInstructors(courses = [], instructors = []) {}
+function getMostPopularInstructors(courses = [], instructors = []) {
+  //get most popular courses first by using the sorting helper function and only keep the top 2 results
+  courses = getMostPopularCoursesHelper(courses).slice(0,2)
+  
+  // console.log(courses)
+  //set courses to be the first two elements from the sorted data set
+  const result = []
+  courses.forEach((courseObj)=>{
+    //build an object with these properties and push the object to the result
+      //name: use courseObj.instructorId to find the instructor with that id
+      //numStudents: use courseObj.roster.length for the numStudents
+    const instructor = findInstructorById(instructors, courseObj.instructorId)
+    const info = {name: helperJoinFirstAndLastNames(instructor), numStudents: courseObj.roster.length}
+    result.push(info)
+  })
 
-function helperJoinFirstAndLastNames(first, last) {
-  return `${first} ${last}`;
+  return result;
+
 }
 
-// console.log(getMostPopularInstructors(courses, instructors));
+function helperJoinFirstAndLastNames(instructor) {
+  return `${instructor.name.first} ${instructor.name.last}`;
+}
+
+console.log(getMostPopularInstructors(courses, instructors));
