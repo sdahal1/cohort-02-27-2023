@@ -21,6 +21,17 @@ function encryptPassword(){
 
 ```
 
+Class March Madness Picks
+1. Duke
+2. Monstars
+3. Toon Squad
+  - Lebron
+  - Bugs Bunny
+  - Daffy Duck
 
+Shop for fan gear here [Awesome Store](www.amazon.com)
+
+
+Cute puppy picture ![Cavalier Puppy](https://www.boredpanda.com/blog/wp-content/uploads/2019/11/tiniest-cavalier-puppy-nessa-4-5dd542099f571__700.jpg)
 
 
