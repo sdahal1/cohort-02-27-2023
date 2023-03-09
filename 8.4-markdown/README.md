@@ -29,7 +29,7 @@ Class March Madness Picks
   - Bugs Bunny
   - Daffy Duck
 
-Shop for fan gear here [Awesome Store](www.amazon.com)
+Shop for fan gear here [Awesome Store](http://www.amazon.com)
 
 
 Cute puppy picture ![Cavalier Puppy](https://www.boredpanda.com/blog/wp-content/uploads/2019/11/tiniest-cavalier-puppy-nessa-4-5dd542099f571__700.jpg)
