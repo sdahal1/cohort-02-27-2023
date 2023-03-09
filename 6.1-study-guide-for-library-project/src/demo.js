@@ -468,7 +468,7 @@ Output in this format:
 [
   { name: 'Javascript Fundamentals', rosterSize: 5 },
   { name: 'Bread And Cheddar- The Fundamentals', rosterSize: 4 },
-  { name: 'Python Fundamentals', rosterSize: 3 }
+  { name: 'Python  Fundamentals', rosterSize: 3 }
 ]
 */
 
