@@ -4,13 +4,15 @@
   "description": "unit testing example",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.7",
-    "mocha": "^10.2.0"
+    "jest": "^29.5.0",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0"
   }
 }
