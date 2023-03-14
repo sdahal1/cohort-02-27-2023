@@ -23,7 +23,7 @@ function getRandomNumber() {
       console.log(`Yay you got data from NYSE, or yay your ranomd number of ${randomNumber} is greater than 10`)
     }
   }catch(error){
-    
+    //catch block runs if the try block's operation results in a thrown error
     console.log("trying plan b to get stock data from anoter server thats slightly slower ")
     console.log("error that was thrown looks like this", error)
   }
