@@ -1,10 +1,10 @@
 {
   "players": [
     {
-      "name": "Lebron 'The King of Akron Ohio' James",
-      "team": "Cavaliers",
-      "number_championships": 4,
-      "state": "Ohio",
+      "name": "The Goat Lebron",
+      "team": "Heat",
+      "number_championships": 6,
+      "state": "Miami",
       "id": "1"
     },
     {
@@ -48,6 +48,13 @@
       "number_championships": 4,
       "state": "California",
       "id": "heNZeH7"
+    },
+    {
+      "name": "Daffy Duck",
+      "team": "Toon Squad",
+      "number_championships": 1,
+      "state": "California",
+      "id": "apEjMYV"
     }
   ]
 }
