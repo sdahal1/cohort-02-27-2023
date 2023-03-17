@@ -1,18 +1,18 @@
 {
   "players": [
     {
-      "name": "The Goat Lebron",
-      "team": "Heat",
-      "number_championships": 6,
-      "state": "Miami",
+      "name": "Lebron 'The King of Akron Ohio' James",
+      "team": "Cavaliers",
+      "number_championships": 4,
+      "state": "Ohio",
       "id": "1"
     },
     {
-      "id": "2",
-      "name": "Steph Curry",
-      "team": "Warriors",
-      "number_championships": 4,
-      "state": "California"
+      "name": "Chef Curry Tha Don",
+      "team": "Lakers",
+      "number_championships": 5,
+      "state": "California",
+      "id": "2"
     },
     {
       "id": "3",
@@ -55,6 +55,20 @@
       "number_championships": 1,
       "state": "California",
       "id": "apEjMYV"
+    },
+    {
+      "name": "Seth Curry",
+      "team": "Warriors",
+      "number_championships": 4,
+      "state": "California",
+      "id": "y3hyEcz"
+    },
+    {
+      "name": "Draymond Green",
+      "team": "Warriors",
+      "number_championships": 4,
+      "state": "California",
+      "id": "p0GkgwP"
     }
   ]
 }
