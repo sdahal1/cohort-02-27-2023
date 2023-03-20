@@ -20,11 +20,11 @@ Promise.resolve({ name: "Lebron" })
 
 
 
-let x = 5
+// let x = 5
 
-if(x === 5){
-  console.log("high 5!")
-}else{
-  console.log("nah")
-}
+// if(x === 5){
+//   console.log("high 5!")
+// }else{
+//   console.log("nah")
+// }
 
