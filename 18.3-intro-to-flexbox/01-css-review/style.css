@@ -1,0 +1,35 @@
+h1{
+  color:cornflowerblue;
+  font-size: 50px;
+  text-align:center;
+  text-decoration: underline;
+}
+
+
+div{
+  background-color: aqua;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+
+.container{
+  padding: 0px;
+  height: 200px;
+  /* width: 100px; */
+}
+
+/* descendant selector */
+.container h2{
+  text-align: center;
+}
+
+/* direct children selector */
+.container > h2{
+  color: purple;
+}
+
+#footer{
+  border-radius: 50%;
+}
+

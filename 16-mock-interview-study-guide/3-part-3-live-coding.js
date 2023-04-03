@@ -35,7 +35,14 @@ getCoinMarketData('bitcoin') /* ->
 }, 
 ...other keys related to market data removed for brevity
 */
+const axios = require('axios');
+const baseUrl = 'https://api.coingecko.com/api/v3/coins'
 
+function getCoinMarketData(coinName){
+  console.log(`${baseUrl}/${coinName}`)
+}
+
+console.log(getCoinMarketData("ethereum"))
 
 /* 
 Top most common bugs that result in failed interviews:
@@ -44,28 +51,27 @@ Top most common bugs that result in failed interviews:
 */
 
 
-const axios = require('axios');
 
 
-function getCoinMarketData(coinName=''){
-  return axios.get(`https://api.coingecko.com/api/v3/coins/${coinName}`)
-    .then((fullResponse)=>{
-        return fullResponse.data.market_data
-    })
-    .catch((err)=>{
-      console.log("Oops try again")
-      return err.message
-    })
-}
+// function getCoinMarketData(coinName=''){
+//   return axios.get(`https://api.coingecko.com/api/v3/coins/${coinName}`)
+//     .then((fullResponse)=>{
+//         return fullResponse.data.market_data
+//     })
+//     .catch((err)=>{
+//       console.log("Oops try again")
+//       return err.message
+//     })
+// }
 
 
 
 //the test will call the function and check to see if the function will return a promise that resolves the data that is in the instructions
 
-getCoinMarketData("bobcat")
-  .then((answer)=>{
-    console.log("answer is this", answer)
-  })
+// getCoinMarketData("bobcat")
+//   .then((answer)=>{
+//     console.log("answer is this", answer)
+//   })
 
   //full response, coin info, final result
 
