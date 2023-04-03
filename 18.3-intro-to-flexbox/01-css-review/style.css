@@ -9,7 +9,7 @@ h1{
 div{
   background-color: aqua;
   border: 1px solid black;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 
@@ -30,6 +30,32 @@ div{
 }
 
 #footer{
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  /* margin: 20px; */
+  /* margin: 200px 5px; */
+  margin: 10px 30px 90px 0px;
+  padding: 40px;
+
+}
+
+h2{
+  border: 1px solid black;
+  flex: 1;
+  /* margin-right: 10px; */
+}
+
+h3{
+  border: 1px solid black;
+  flex: 2;
+  /* margin-right: 10px; */
+}
+
+#dat{
+  /* margin-right: 0px; */
+}
+
+#last{
+  display:flex;
+  gap: 10px;
 }
 

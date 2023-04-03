@@ -1,0 +1,49 @@
+1. What is inline element vs block element
+  -Inline element- Allows other elements to be beside them
+    -examples: img, a, button, inputs
+  -Block element - Doesn't allow other elements to be beside them, even if there is space available
+    -examples: h1-h6, div (also section, article)
+
+2. What is a selector, what is a property, and what is a value in css?
+  h1{
+    color:cornflowerblue;
+    font-size: 50px;
+    text-align:center;
+    text-decoration: underline;
+  }
+  -css rule -> the whole block from line 8-13
+  -selector: h1
+  -property: color, font-size, text-align, text-decoration
+  -value: cornflowerblue, 50px, center, underline
+  -declaration: property+value -> color:cornflowerblue;
+
+
+3. What is margin vs padding?
+  -margin: space outside the element (usecase: to create space between elements)
+  -padding: space inside the border of an element (usecase: create space between the inside border and content of an element)
+
+4. What does switching display property of an element to 'flex' do?
+  display:flex-> make the children of the element that is display: flex to be side by side
+
+5. Does display:flex need to be:
+  a. A: on the element that needs to be side by side with something else
+  b. B:  on the parent of the element that needs to be side by side
+
+
+6. What is a flex container?
+  - its the element the holds the flex items. An element that has display: flex applied to it so that its children can be flexible
+
+7. What is a flex item?
+  - the children of a flex container
+
+8. What does the flex property do?
+  - has to do with the filling of the available space in the flex container
+
+9. Does the flex property go on parent container or flex item?
+  -flex items (children of the flex container)
+
+10. Gap and margin are some of the ways to create some space  between flex items. Which goes on the flex container and which goes on flex items (children)?
+  -gap: container
+  -margin: children
+
+

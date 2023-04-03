@@ -1,0 +1,27 @@
+h1{
+  text-align: center;
+}
+
+img{
+  width: 100%;
+}
+
+
+/* breakpoint of 800px */
+@media all and (min-width: 800px){
+  .flex-container{
+    display:flex;
+    gap: 10px;
+  }
+
+  #top-left{
+    flex: 1;
+    /* border: 1px solid black; */
+  }
+  #top-right{
+    flex: 2;
+    /* border: 1px solid black; */
+  }
+
+  
+}

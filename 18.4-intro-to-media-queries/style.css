@@ -1,0 +1,38 @@
+/* media queries allow us to conditionally write css for different device widths */
+
+h1{
+  text-align: center;
+  font-size: 45px;
+}
+
+p{
+  font-size: 30px;
+}
+
+/* desktop view will start at 500px and up */
+
+@media all and (min-width:500px){
+
+h1{
+  font-size: 30px;
+}
+
+p{
+  font-size: 20px;
+}
+
+.container{
+  display:flex;
+  gap: 20px;
+}
+
+#nav-div{
+  display:flex;
+  gap: 20px;
+}
+
+
+
+}
+
+
