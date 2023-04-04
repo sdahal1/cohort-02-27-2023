@@ -1,0 +1,41 @@
+.row{
+  background-color: aqua;
+  border: 1px solid black;
+  display:flex;
+}
+
+.item{
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  border: 1px solid black;;
+}
+
+.jc-center{
+  justify-content: center;
+}
+
+.jc-right{
+  justify-content: flex-end;
+}
+
+.jc-space-bw{
+  justify-content: space-between;
+}
+
+.jc-space-around{
+  justify-content: space-around;
+}
+
+.jc-space-evenly{
+  justify-content: space-evenly;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: aqua;
+  border: 1px solid black;
+  height: 1000px;
+}
