@@ -105,6 +105,14 @@ main {
   color: rgba(255, 255, 255, 0.5);
 }
 
+.high-rating {
+  background-color: yellow;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+
 @media screen and (min-width: 600px) {
   main {
     grid-template-columns: repeat(2, 1fr);
