@@ -34,9 +34,11 @@
     background-color: rgb(164, 130, 88);
 }
 
-.puppy h2, .kitten h2{
+.puppy h3, .kitten h3{
     text-align: center;
+    color: red;
 }
+
 
 img{
     width: 50%;
