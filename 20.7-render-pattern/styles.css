@@ -1,0 +1,9 @@
+h1 {
+  color: seagreen;
+}
+
+.module {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin: 10px;
+}
