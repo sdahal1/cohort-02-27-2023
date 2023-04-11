@@ -7,7 +7,7 @@ import './Module.css';
 function Module({ module }) {
 
   return <div className="module">
-    <h3>Module {module.number} Complete by {module.dueDate}</h3>
+    <h3 className="btn btn-primary">Module {module.number} Complete by {module.dueDate}</h3>
     <h2>{module.title}</h2>
     {/* <Overdue date={module.dueDate} /> */}
     <h3>{module.dueDate === 'Apr 7' ? 'Overdue!!' : 'Due in the future'}</h3>
