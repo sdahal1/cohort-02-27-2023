@@ -32,7 +32,8 @@ function App() {
   ]
   return (
     <div className="App">
-      <Header />
+      
+      <Header numberOfModules={modules.length} />
       <ModuleList modules={modules} />
     </div>
   );

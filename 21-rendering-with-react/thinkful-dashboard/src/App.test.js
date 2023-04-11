@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('tests about the App', () => {
+  test('app renders without errors', () => {
+    render(<App />);
+  });
+  test('says that Thinkful is the coolest school', () => {
+    render(<App />);
+    let coolestSchool = screen.getByText(/COOLEST school/i);
+  })
 });

@@ -1,13 +1,14 @@
 import React from 'react';
 
 // a React component is a function that returns some HTML to be displayed on the page
-function Header() {
+function Header({ numberOfModules }) {
   let schoolName = 'Thinkful';
   return (
-    <React.Fragment>
-      <h1 className="school-name">{schoolName}</h1>
+    <header>
+      <h1 className="school-name" style={{ color: 'white' }}>{schoolName}</h1>
       <h2>The coolest school</h2>
-    </React.Fragment>
+      <h2>There are {numberOfModules} modules.</h2>
+    </header>
   )
 
 }
