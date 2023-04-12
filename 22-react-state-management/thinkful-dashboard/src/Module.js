@@ -13,15 +13,23 @@ import './Module.css';
 // this param could be called props
 // access data like props.number
 // but destructuring is cool and fun
-function Module({ module }) {
+function Module({ module, setModuleComplete }) {
 
   return <div className="module">
-    <h3 className="btn btn-primary">Module {module.number} Complete by {module.dueDate}</h3>
+    <h3>Module {module.number} Complete by {module.dueDate}</h3>
     <h2>{module.title}</h2>
     {/* <Overdue date={module.dueDate} /> */}
     <h3>{module.dueDate === 'Apr 7' ? 'Overdue!!' : 'Due in the future'}</h3>
     {/* conditional using lazy and */}
     {module.dueDate === 'Apr 7' && <h4>do this work soon!!</h4>}
+    <h4>{
+      module.completed ?
+        'Complete' :
+        <>
+          Incomplete
+          <button className="btn btn-primary" onClick={() => setModuleComplete(module)}>Mark completed</button>
+        </>
+    }</h4>
   </div>
 }
 

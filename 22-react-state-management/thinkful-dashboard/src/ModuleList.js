@@ -1,13 +1,13 @@
 import React from 'react';
 import Module from './Module';
 
-function ModuleList({ modules, numberOfClicks }) {
+function ModuleList({ modules, numberOfClicks, setModuleComplete }) {
   let fruits = ['apple', 'banana', 'cantaloupe', 'dragonfruit'];
   return <div>
     <h3>Modules</h3>
 
     <h4>{numberOfClicks} clicks</h4>
-    {modules.map(module => <Module module={module} key={module.number} />)}
+    {modules.map(module => <Module module={module} setModuleComplete={setModuleComplete} key={module.number} />)}
     <ul>
       {fruits.map(fruit => <li key={fruit}>{fruit}</li>)}
     </ul>
