@@ -1,6 +1,15 @@
 import React from 'react';
 import './Module.css';
 
+
+// warmup question
+// What is an event listener? How do we set one up (in English, not in JS)?
+// Event listeners are functions that we set up to fire when some event happens (keypress, click, etc)
+// Which element on the page are we listening for the event?
+// Which event are we listening for on that element?
+// What should we do when that event happens? (this is the code in the function)
+// In vanilla JS, document.querySelector('#myCoolElement').addEventListener('click', () => { code })
+
 // this param could be called props
 // access data like props.number
 // but destructuring is cool and fun
