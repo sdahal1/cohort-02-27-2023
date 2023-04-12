@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Header from './Header';
 import ModuleList from './ModuleList';
 import './App.css';
@@ -30,11 +31,14 @@ function App() {
       title: 'React state management'
     },
   ]
+  const [numberOfClicks, setNumberOfClicks] = useState(0);
+  function incrementNumberOfClicks() {
+    setNumberOfClicks(numberOfClicks => numberOfClicks + 1)
+  }
   return (
     <div className="App">
-      
-      <Header numberOfModules={modules.length} />
-      <ModuleList modules={modules} />
+      <Header numberOfModules={modules.length} numberOfClicks={numberOfClicks} incrementNumberOfClicks={incrementNumberOfClicks} />
+      <ModuleList modules={modules} numberOfClicks={numberOfClicks} />
     </div>
   );
 }

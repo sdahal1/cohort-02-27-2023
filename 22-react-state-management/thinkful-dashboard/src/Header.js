@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
 // a React component is a function that returns some HTML to be displayed on the page
-function Header({ numberOfModules }) {
+function Header({ numberOfModules, numberOfClicks, incrementNumberOfClicks }) {
   let schoolName = 'Thinkful';
   // wishful thinking... we have to use state variables for anything that gets updated
   // let numberOfClicks = 0;
   //    variable          setter for variable        initial value
-  const [numberOfClicks, setNumberOfClicks] = useState(0);
-  function incrementNumberOfClicks() {
-    setNumberOfClicks(numberOfClicks => numberOfClicks + 1)
-  }
+  
   return (
     <header>
       <h1 className="school-name" onClick={incrementNumberOfClicks}>{schoolName}</h1>

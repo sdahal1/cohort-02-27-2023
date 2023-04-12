@@ -1,20 +1,18 @@
 import React from 'react';
 import Module from './Module';
 
-function ModuleList({ modules }) {
+function ModuleList({ modules, numberOfClicks }) {
   let fruits = ['apple', 'banana', 'cantaloupe', 'dragonfruit'];
   return <div>
     <h3>Modules</h3>
-    {/* yes we can map these, it's coming sooooon */}
+
+    <h4>{numberOfClicks} clicks</h4>
     {modules.map(module => <Module module={module} key={module.number} />)}
     <ul>
       {fruits.map(fruit => <li key={fruit}>{fruit}</li>)}
     </ul>
     {/* add in a UL that contains LI's for all the fruits */}
 
-    {/* <Module module={modules[0]} />
-    <Module module={modules[1]} />
-    <Module module={modules[4]} /> */}
   </div>
 }
 
