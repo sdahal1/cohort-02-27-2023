@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AddModule from './AddModule';
 import Header from './Header';
 import ModuleList from './ModuleList';
 import './App.css';
@@ -52,9 +53,16 @@ function App() {
   function incrementNumberOfClicks() {
     setNumberOfClicks(numberOfClicks => numberOfClicks + 1)
   }
+  function addModule(newModule) {
+    setModules([
+      ...modules,
+      newModule
+    ])
+  }
   return (
     <div className="App">
       <Header numberOfModules={modules.length} numberOfClicks={numberOfClicks} incrementNumberOfClicks={incrementNumberOfClicks} />
+      <AddModule addModule={addModule} />
       <ModuleList modules={modules} numberOfClicks={numberOfClicks} setModuleComplete={setModuleComplete} />
     </div>
   );

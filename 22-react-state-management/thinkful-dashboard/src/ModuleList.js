@@ -30,18 +30,6 @@ export default ModuleList;
 // map over the fruits array to make the fruits plural
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // A
 // fruits.map((fruit)=>{
 //   return fruit+='s'
