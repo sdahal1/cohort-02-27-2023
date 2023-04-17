@@ -13,12 +13,31 @@ function App() {
     // fetch('https://api.tvmaze.com/shows?page=1')
     //   .then(response => response.json())
     //   .then(shows => setAllShows(shows));
+    
+    // let us cancel the fetch later
+    const abortController = new AbortController();
+    
     async function fetchAllShows() {
-      let response = await fetch('https://api.tvmaze.com/shows?page=1');
-      let shows = await response.json();
-      setAllShows(shows);
+      try {
+        let response = await fetch(
+          'https://api.tvmaze.com/shows?page=1',
+          { signal: abortController.signal } // the abortController has the ability to cancel you
+          );
+        let shows = await response.json();
+        setAllShows(shows);
+      } catch(e) {
+        if(e.name === 'AbortError') {
+          // abort errors are expected, so don't worry about it
+          console.log('abort error');
+        } else {
+          throw e;
+        }
+      }
     }
     fetchAllShows();
+    return () => {
+      abortController.abort();
+    }
   }, [])
 
   return (
