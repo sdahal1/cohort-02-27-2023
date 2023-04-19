@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Browse from './Browse';
 import Search from './Search/Search';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import ShowDetail from './ShowDetail';
+import ShowDetail from './ShowDetail/ShowDetail';
 
 function App() {
   const [numClicks, setNumClicks] = useState(1)
@@ -22,15 +22,20 @@ function App() {
           <Link to="/">Browse</Link>
           <Link to="/search">Search</Link>
         </nav>
-        <Route path="/" exact={true}>
-          <Browse />
-        </Route>
-        <Route path="/search">
-          <Search />
-        </Route>
-        <Route path="/shows/:id">
-          <ShowDetail />
-        </Route>
+        <Switch>
+          <Route path="/" exact={true}>
+            <Browse />
+          </Route>
+          <Route path="/search">
+            <Search />
+          </Route>
+          <Route path="/potatoes/:id">
+            <ShowDetail />
+          </Route>
+          <Route>
+            <h2>404 Not Found</h2>
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
