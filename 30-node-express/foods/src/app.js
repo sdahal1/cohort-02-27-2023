@@ -19,10 +19,10 @@ app.use((req, res, next) => {
 // path ("/")
 // what to do when a request comes in (function)
 app.get("/", (req, res, next) => {
-  res.semd('This is the food app');
+  res.send('This is the food app');
 })
 
-app.get("/granola", (res, req, next) => {
+app.get("/granola", (req, res, next) => {
   res.send('granola is a great breakfast');
 })
 
@@ -38,7 +38,7 @@ app.get('/foods/favorites', (req, res, next) => {
 })
 
 function checkFoodLength(req, res, next) {
-  let { food } = req.query;
+  let { food } = req.params;
   if (food.length < 2) {
     // errors, sadness
     next({
@@ -67,11 +67,11 @@ app.get('/foods/:food/:type', checkFoodLength, (req, res, next) => {
 // and should send back
 // bernaise sauce is delicious
 app.get('/sauce/:sauce', (req, res, next) => {
-  let { delicious = req.query } = true;
+  let { delicious = "true" } = req.query;
   if (delicious === 'false') {
-    return res.send(`${req.query.sauce} is not delicious`);
+    return res.send(`${req.params.sauce} is not delicious`);
   } else if (delicious === 'true') {
-    return res.send(`${req.query.sauce} is delicious`);
+    return res.send(`${req.params.sauce} is delicious`);
   } else {
     // not true or false??? bad request. error handling.
     return next({
@@ -94,8 +94,9 @@ app.use((req, res, next) => {
 
 // error handling
 app.use((error, req, res, next) => {
-  console.log(error.message);
-  res.status(error.status).send(error.message);
+  const { message = 'There was an error', status = 500 } = error;
+  console.log(error);
+  res.status(status).send(message);
 })
 
 module.exports = app;
