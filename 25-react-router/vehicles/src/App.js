@@ -8,6 +8,7 @@ function App() {
   const [make, setMake] = useState('honda');
   const [input, setInput] = useState('');
   useEffect(() => {
+    debugger;
     fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`)
       .then(response => response.json())
       .then(data => setModels(data.Results))

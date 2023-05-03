@@ -97,6 +97,6 @@ app.use((error, req, res, next) => {
   const { message = 'There was an error', status = 500 } = error;
   console.log(error);
   res.status(status).send(message);
-})
+});
 
 module.exports = app;
