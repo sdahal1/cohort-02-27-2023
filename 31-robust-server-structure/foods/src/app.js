@@ -91,31 +91,36 @@ app.get('/sauce/:sauce', (req, res, next) => {
 const fruits = require('./data/fruits.js');
 
 // route /fruits that sends in the response all of the fruit data
+
+function validateFruitExists(req, res, next) {
+  let fruit = fruits.find(fruit => fruit.id === Number(req.params.id));
+  if (fruit) {
+    next();
+  } else {
+    next({
+      status: 404,
+      message: `Could not find fruit with id ${req.params.id}`
+    })
+  }
+}
+
 // list
 app.get('/fruits', (req, res, next) => {
-  res.send(fruits);
+  res.send({ data: fruits });
 })
 
 // read
-app.get('/fruits/:id', (req, res, next) => {
+app.get('/fruits/:id', validateFruitExists, (req, res, next) => {
   let { id } = req.params;
   // make sure the data type is number
   id = Number(id);
   // look into the fruits array and find one with that ID
   let fruit = fruits.find(f => f.id === id);
-  // if it exists
-  if (fruit) {
-    // send it back as the response
-    res.send({ data: fruit });
-  } else {
-    // did not find a fruit, go to error handling
-    next({
-      status: 404,
-      message: `Fruit not found with id ${id}`
-    })
-  }
+  // send it back as the response
+  res.send({ data: fruit });
 })
 
+// create
 let nextId = 7;
 app.post('/fruits', (req, res, next) => {
   // for POST requests, the data we want is in the request body
@@ -129,8 +134,20 @@ app.post('/fruits', (req, res, next) => {
   res.status(201).send({ data });
 })
 
+// update
+app.put('/fruits/:id', validateFruitExists, (req, res, next) => {
+  // find the fruit in the fruits array
+  let fruit = fruits.find(fruit => fruit.id === Number(req.params.id));
+  // update its data using the request body
+  let { name, description } = req.body.data;
+  fruit.name = name;
+  fruit.description = description;
+  // send back the updated data
+  res.send(fruit);
+})
+
 // destroy
-app.delete('/fruits/:id', (req, res, next) => {
+app.delete('/fruits/:id', validateFruitExists, (req, res, next) => {
   // find the index of the fruit we want to delete
   let id = Number(req.params.id);
   let index = fruits.findIndex(fruit => fruit.id === id);
