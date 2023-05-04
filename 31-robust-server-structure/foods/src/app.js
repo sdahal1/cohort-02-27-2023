@@ -26,6 +26,7 @@ app.get("/", (req, res, next) => {
 })
 
 app.get("/granola", (req, res, next) => {
+  doesNotExist();
   res.send('granola is a great breakfast');
 })
 
