@@ -45,8 +45,12 @@ function create(req, res, next) {
 function validateDinoExists(req, res, next) {
   let { dinosaurId } = req.params;
   dinosaurId = Number(dinosaurId);
-  let dinosaur = dinosaurs.find(d => d.id === dinosaurId);
-  if (dinosaur) {
+  let index = dinosaurs.findIndex(d => d.id === Number(req.params.dinosaurId));
+  if (index > -1) {
+    let dinosaur = dinosaurs[index];
+    // save the dinosaur that we found for future use
+    res.locals.dinosaur = dinosaur;
+    res.locals.index = index;
     next();
   } else {
     next({
@@ -55,11 +59,20 @@ function validateDinoExists(req, res, next) {
     })
   }
 }
+
 function read(req, res, next) {
-  let { dinosaurId } = req.params;
-  dinosaurId = Number(dinosaurId);
-  let dinosaur = dinosaurs.find(d => d.id === dinosaurId);
+  // use the saved dinosaur from inside the validator function
+  const { dinosaur } = res.locals;
   res.send({ data: dinosaur })
+}
+
+function destroy(req, res, next) {
+  // find the dinosaur to destroy
+  let { index } = res.locals;
+  // splice it out of the array
+  dinosaurs.splice(index, 1);
+  // send back a 204
+  res.status(204).send();
 }
 
 let fields = ['name', 'coolness', 'bigness'];
@@ -68,5 +81,6 @@ module.exports = {
   list,
   // create: [validateDataExists, createValidatorFor('name'), createValidatorFor('coolness'), createValidatorFor('bigness'), create]
   create: [validateDataExists, ...fields.map(createValidatorFor), create],
-  read: [validateDinoExists, read]
+  read: [validateDinoExists, read],
+  destroy: [validateDinoExists, destroy]
 }
