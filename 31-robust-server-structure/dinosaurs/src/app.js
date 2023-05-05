@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cors = require('cors');
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res, next) => {
   res.send('root');
@@ -11,6 +13,8 @@ app.get('/', (req, res, next) => {
 
 const dinosaursRouter = require('./dinosaurs/dinosaurs.router');
 app.use('/dinosaurs', dinosaursRouter);
+const coloniesRouter = require('./colonies/colonies.router');
+app.use('/colonies', coloniesRouter);
 
 // 404 handler
 app.use((req, res, next) => {

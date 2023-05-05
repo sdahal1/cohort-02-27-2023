@@ -16,5 +16,11 @@ module.exports = [
     name: 'triceratops',
     coolness: 7,
     bigness: 5
+  },
+  {
+    id: 4,
+    name: 'velociraptor',
+    coolness: 9,
+    bigness: 4
   }
 ]

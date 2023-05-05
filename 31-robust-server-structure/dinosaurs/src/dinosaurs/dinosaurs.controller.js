@@ -1,7 +1,18 @@
 const dinosaurs = require('../data/dinosaurs');
+const colonies = require('../data/colonies');
 
 function list(req, res, next) {
-  res.send({ data: dinosaurs })
+  const { colonyId } = req.params;
+  if (colonyId) {
+    // find the colony with that id
+    let colony = colonies.find(c => c.id === Number(colonyId))
+    // filter down to just the dinosaurs in that colony
+    let dinosToSend = dinosaurs.filter(d => colony.dinosaurs.includes(d.id))
+    // send those dinosaurs
+    res.send({ data: dinosToSend })
+  } else {
+    res.send({ data: dinosaurs })
+  }
 }
 
 function validateDataExists(req, res, next) {
@@ -28,7 +39,7 @@ function createValidatorFor(field) {
   }
 }
 
-let nextId = 4;
+let nextId = 5;
 function create(req, res, next) {
   const { name, coolness, bigness } = req.body.data;
   let newDinosaur = {

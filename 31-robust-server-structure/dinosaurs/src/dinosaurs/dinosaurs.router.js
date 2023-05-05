@@ -1,6 +1,6 @@
 const express = require('express');
 
-const dinosaursRouter = express.Router();
+const dinosaursRouter = express.Router({ mergeParams: true });
 const controller = require('./dinosaurs.controller');
 const methodNotAllowed = require('../errors/methodNotAllowed');
 
