@@ -1,6 +1,7 @@
 const dinosaurs = require('../data/dinosaurs');
 const colonies = require('../data/colonies');
 
+const knex = require('../db/connection');
 function list(req, res, next) {
   const { colonyId } = req.params;
   if (colonyId) {
@@ -11,7 +12,8 @@ function list(req, res, next) {
     // send those dinosaurs
     res.send({ data: dinosToSend })
   } else {
-    res.send({ data: dinosaurs })
+    knex('dinosaurs').select('*').then(dinoData => res.send({ data: dinoData }))
+    // res.send({ data: dinosaurs })
   }
 }
 
