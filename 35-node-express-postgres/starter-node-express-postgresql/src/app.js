@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const productsRouter = require("./products/products.router");
-const categoriesRouter = require("./categories/categories.router");
-const suppliersRouter = require("./suppliers/suppliers.router");
+// const categoriesRouter = require("./categories/categories.router");
+// const suppliersRouter = require("./suppliers/suppliers.router");
 const articlesRouter = require("./articles/articles.router");
 
 
@@ -10,8 +10,8 @@ app.use(express.json());
 
 app.use("/articles", articlesRouter)
 app.use("/products", productsRouter);
-app.use("/categories", categoriesRouter);
-app.use("/suppliers", suppliersRouter);
+// app.use("/categories", categoriesRouter);
+// app.use("/suppliers", suppliersRouter);
 
 // Not found handler
 app.use((req, res, next) => {
