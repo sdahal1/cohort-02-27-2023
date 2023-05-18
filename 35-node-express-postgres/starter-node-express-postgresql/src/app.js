@@ -6,6 +6,11 @@ const productsRouter = require("./products/products.router");
 const articlesRouter = require("./articles/articles.router");
 
 
+// app.use(cors({
+//   origin: "whateverapi.com",
+//   methods: [GET, HEAD, OPTIONS]
+// }))
+
 app.use(express.json());
 
 app.use("/articles", articlesRouter)
