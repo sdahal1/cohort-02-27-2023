@@ -118,3 +118,4 @@ In case of collision, when two keys have the same index, the hash table will use
 Chaining is what we talked about with creating a linked list (We will go over them next week)
 
 Open addressing: In open addressing, when a collision occurs, the hash table looks for the next available slot (or "open address") in the array to store the key-value pair. This is done by using a probe sequence, such as linear probing or quadratic probing
+
